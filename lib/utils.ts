@@ -1,4 +1,4 @@
-import { Camera, Color, Point, Side, XYWH } from "@/types/canvas";
+import { Camera, Color, Layer, Point, Side, XYWH } from "@/types/canvas";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -52,4 +52,38 @@ export const resizeBounds = (
 	}
 
 	return result;
+};
+
+export const findLayersInSelectionNet = (
+	layerIds: readonly string[],
+	layers: ReadonlyMap<string, Layer>,
+	origin: Point,
+	current: Point
+) => {
+	const rect = {
+		x: Math.min(origin.x, current.x),
+		y: Math.min(origin.y, current.y),
+		width: Math.abs(origin.x - current.x),
+		height: Math.abs(origin.y - current.y),
+	};
+
+	const ids = [];
+
+	for (const layerId of layerIds) {
+		const layer = layers.get(layerId);
+		if (layer == null) continue;
+
+		const { x, y, height, width } = layer;
+
+		if (
+			rect.x + rect.width > x &&
+			rect.x < x + width &&
+			rect.y + rect.height > y &&
+			rect.y < y + height
+		) {
+			ids.push(layerId);
+		}
+	}
+
+	return ids;
 };

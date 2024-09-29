@@ -1,6 +1,5 @@
 import { rgbToHex } from "@/lib/utils";
 import { RectangleLayer } from "@/types/canvas";
-import { memo } from "react";
 
 interface RectangleProps {
 	id: string;

@@ -21,7 +21,7 @@ const SelectionTools = memo(
 		const selection = useSelf((me) => me.presence.selection);
 
 		const changeLayerLevel = useMutation(
-			({ storage }, position: string) => {
+			({ storage }, moveTo: string) => {
 				const liveLayerIds = storage.get("layerIds");
 				const indices: number[] = [];
 				const arr = liveLayerIds.toArray();
@@ -35,7 +35,7 @@ const SelectionTools = memo(
 				for (let i = 0; i < indices.length; i++) {
 					liveLayerIds.move(
 						indices[i],
-						position === "front" ? arr.length - i - 1 : i
+						moveTo === "front" ? arr.length - i - 1 : i
 					);
 				}
 			},

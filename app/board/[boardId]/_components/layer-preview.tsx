@@ -1,9 +1,10 @@
 "use client";
 
-import { memo, useEffect } from "react";
+import { memo } from "react";
 import { useStorage } from "@liveblocks/react/suspense";
 
 import Rectangle from "./rectangle";
+import Ellipse from "./ellipse";
 import { LayerType } from "@/types/canvas";
 
 interface LayerPreviewProps {
@@ -21,6 +22,15 @@ const LayerPreview = memo(
 			case LayerType.Rectangle:
 				return (
 					<Rectangle
+						id={id}
+						layer={layer}
+						onLayerPointerDown={onLayerPointerDown}
+						selectionColor={selectionColor}
+					/>
+				);
+			case LayerType.Ellipse:
+				return (
+					<Ellipse
 						id={id}
 						layer={layer}
 						onLayerPointerDown={onLayerPointerDown}
