@@ -1,10 +1,9 @@
 "use client";
 
-import { memo } from "react";
 import { useSelf, useStorage } from "@liveblocks/react/suspense";
 
 import Handle from "./handle";
-import useSelectionBounds from "@/hooks/use-selection-bounds";
+import { useSelectionBounds } from "@/hooks/use-selection-bounds";
 import { LayerType, Side, XYWH } from "@/types/canvas";
 
 interface SelectionBoxProps {
@@ -43,7 +42,7 @@ const SelectionBox = ({ onResizeHandlePointerDown }: SelectionBoxProps) => {
 						cursor="nwse-resize"
 						x={x}
 						y={y}
-						onPointerDown={(e) => {
+						onLayerPointerDown={(e) => {
 							e.stopPropagation();
 							onResizeHandlePointerDown(
 								Side.Top + Side.Left,
@@ -55,7 +54,7 @@ const SelectionBox = ({ onResizeHandlePointerDown }: SelectionBoxProps) => {
 						cursor="ns-resize"
 						x={x + width / 2}
 						y={y}
-						onPointerDown={(e) => {
+						onLayerPointerDown={(e) => {
 							e.stopPropagation();
 							onResizeHandlePointerDown(Side.Top, bounds);
 						}}
@@ -64,7 +63,7 @@ const SelectionBox = ({ onResizeHandlePointerDown }: SelectionBoxProps) => {
 						cursor="nesw-resize"
 						x={x + width}
 						y={y}
-						onPointerDown={(e) => {
+						onLayerPointerDown={(e) => {
 							e.stopPropagation();
 							onResizeHandlePointerDown(
 								Side.Top + Side.Right,
@@ -76,7 +75,7 @@ const SelectionBox = ({ onResizeHandlePointerDown }: SelectionBoxProps) => {
 						cursor="ew-resize"
 						x={x + width}
 						y={y + height / 2}
-						onPointerDown={(e) => {
+						onLayerPointerDown={(e) => {
 							e.stopPropagation();
 							onResizeHandlePointerDown(Side.Right, bounds);
 						}}
@@ -85,7 +84,7 @@ const SelectionBox = ({ onResizeHandlePointerDown }: SelectionBoxProps) => {
 						cursor="nwse-resize"
 						x={x + width}
 						y={y + height}
-						onPointerDown={(e) => {
+						onLayerPointerDown={(e) => {
 							e.stopPropagation();
 							onResizeHandlePointerDown(
 								Side.Bottom + Side.Right,
@@ -97,7 +96,7 @@ const SelectionBox = ({ onResizeHandlePointerDown }: SelectionBoxProps) => {
 						cursor="ns-resize"
 						x={x + width / 2}
 						y={y + height}
-						onPointerDown={(e) => {
+						onLayerPointerDown={(e) => {
 							e.stopPropagation();
 							onResizeHandlePointerDown(Side.Bottom, bounds);
 						}}
@@ -106,7 +105,7 @@ const SelectionBox = ({ onResizeHandlePointerDown }: SelectionBoxProps) => {
 						cursor="nesw-resize"
 						x={x}
 						y={y + height}
-						onPointerDown={(e) => {
+						onLayerPointerDown={(e) => {
 							e.stopPropagation();
 							onResizeHandlePointerDown(
 								Side.Bottom + Side.Left,
@@ -118,7 +117,7 @@ const SelectionBox = ({ onResizeHandlePointerDown }: SelectionBoxProps) => {
 						cursor="ew-resize"
 						x={x}
 						y={y + height / 2}
-						onPointerDown={(e) => {
+						onLayerPointerDown={(e) => {
 							e.stopPropagation();
 							onResizeHandlePointerDown(Side.Left, bounds);
 						}}

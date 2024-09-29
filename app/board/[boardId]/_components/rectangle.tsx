@@ -5,14 +5,14 @@ import { memo } from "react";
 interface RectangleProps {
 	id: string;
 	layer: RectangleLayer;
-	onPointerDown: (e: React.PointerEvent, id: string) => void;
+	onLayerPointerDown: (e: React.PointerEvent, id: string) => void;
 	selectionColor?: string;
 }
 
 const Rectangle = ({
 	id,
 	layer,
-	onPointerDown,
+	onLayerPointerDown,
 	selectionColor,
 }: RectangleProps) => {
 	const { x, y, width, height, fill } = layer;
@@ -20,7 +20,7 @@ const Rectangle = ({
 	return (
 		<rect
 			className="drop-shadow-md"
-			onPointerDown={(e) => onPointerDown(e, id)}
+			onPointerDown={(e) => onLayerPointerDown(e, id)}
 			style={{
 				transform: `translate(${x}px, ${y}px)`,
 			}}

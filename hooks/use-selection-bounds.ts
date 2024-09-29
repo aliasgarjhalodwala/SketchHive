@@ -38,7 +38,7 @@ const boundingBox = (layers: Layer[]): XYWH | null => {
 	};
 };
 
-const useSelectionBounds = () => {
+export const useSelectionBounds = () => {
 	const selection = useSelf((me) => me.presence.selection);
 
 	return useStorage((root) => {
@@ -49,5 +49,3 @@ const useSelectionBounds = () => {
 		return boundingBox(selectedLayers);
 	}, shallow);
 };
-
-export default useSelectionBounds;

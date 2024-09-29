@@ -7,10 +7,10 @@ interface HandleProps {
 	cursor: string;
 	x: number;
 	y: number;
-	onPointerDown: (e: React.PointerEvent) => void;
+	onLayerPointerDown: (e: React.PointerEvent) => void;
 }
 
-const Handle = ({ cursor, x, y, onPointerDown }: HandleProps) => {
+const Handle = ({ cursor, x, y, onLayerPointerDown }: HandleProps) => {
 	return (
 		<rect
 			className="fill-white stroke-1 stroke-blue-500"
@@ -22,7 +22,7 @@ const Handle = ({ cursor, x, y, onPointerDown }: HandleProps) => {
 				height: `${HANDLE_SIZE}px`,
 				transform: `translate(${x - HANDLE_OFFSET}px, ${y - HANDLE_OFFSET}px)`,
 			}}
-			onPointerDown={onPointerDown}
+			onPointerDown={onLayerPointerDown}
 		/>
 	);
 };

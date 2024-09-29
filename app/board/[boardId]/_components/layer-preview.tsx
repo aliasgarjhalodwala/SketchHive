@@ -8,12 +8,12 @@ import { LayerType } from "@/types/canvas";
 
 interface LayerPreviewProps {
 	id: string;
-	onPointerDown: (e: React.PointerEvent, layerId: string) => void;
+	onLayerPointerDown: (e: React.PointerEvent, layerId: string) => void;
 	selectionColor?: string;
 }
 
 const LayerPreview = memo(
-	({ id, onPointerDown, selectionColor }: LayerPreviewProps) => {
+	({ id, onLayerPointerDown, selectionColor }: LayerPreviewProps) => {
 		const layer = useStorage((root) => root.layers.get(id));
 		if (!layer) return null;
 
@@ -23,7 +23,7 @@ const LayerPreview = memo(
 					<Rectangle
 						id={id}
 						layer={layer}
-						onPointerDown={onPointerDown}
+						onLayerPointerDown={onLayerPointerDown}
 						selectionColor={selectionColor}
 					/>
 				);
