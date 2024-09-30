@@ -21,7 +21,6 @@ interface BoardCardProps {
 	authorId: string;
 	authorName: string;
 	createdAt: number;
-	orgId: string;
 	isFavourite: boolean;
 }
 
@@ -32,7 +31,6 @@ const BoardCard = ({
 	authorId,
 	authorName,
 	createdAt,
-	orgId,
 	isFavourite,
 }: BoardCardProps) => {
 	const { userId } = useAuth();

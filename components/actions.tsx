@@ -33,7 +33,7 @@ const Actions = ({ children, side, sideOffset, id, title }: ActionsProps) => {
 				`${window.location.origin}/board/${id}`
 			);
 			toast.success("Link copied");
-		} catch (error: any) {
+		} catch (error) {
 			toast.error("Failed to copy link");
 		}
 	};
@@ -46,7 +46,7 @@ const Actions = ({ children, side, sideOffset, id, title }: ActionsProps) => {
 		try {
 			mutate({ boardId: id });
 			toast.success("Board deleted");
-		} catch (error: any) {
+		} catch (error) {
 			toast.error("Failed to delete board");
 		}
 	};

@@ -24,8 +24,8 @@ const NoData = () => {
 			});
 			toast.success("Board Created");
 			router.push(`/board/${boardId}`);
-		} catch (error: any) {
-			toast.error("Failed to create board", error.message);
+		} catch (error) {
+			toast.error("Failed to create board");
 		}
 	};
 

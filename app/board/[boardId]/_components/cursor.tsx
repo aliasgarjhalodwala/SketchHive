@@ -43,4 +43,7 @@ const Cursor = memo(({ connectionId }: CursorProps) => {
 		</foreignObject>
 	);
 });
+
+Cursor.displayName = "Cursor";
+
 export default Cursor;

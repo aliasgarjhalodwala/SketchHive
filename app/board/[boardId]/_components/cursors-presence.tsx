@@ -65,4 +65,6 @@ const CursorsPresence = memo(() => {
 	);
 });
 
+CursorsPresence.displayName = "CursorsPresence";
+
 export default CursorsPresence;

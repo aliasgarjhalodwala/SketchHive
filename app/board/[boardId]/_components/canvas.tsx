@@ -70,31 +70,6 @@ const Canvas = ({ boardId }: CanvasProps) => {
 	const canUndo = useCanUndo();
 	const canRedo = useCanRedo();
 
-	useEffect(() => {
-		function onKeyDown(e: KeyboardEvent) {
-			e.stopPropagation();
-
-			if (e.key === "Backspace" || e.key === "Delete") {
-				if (
-					e.target instanceof HTMLElement &&
-					!e.target.isContentEditable
-				)
-					deleteLayers();
-			} else if (e.key === "a" && (e.ctrlKey || e.metaKey)) {
-				selectAllLayers();
-			} else if (e.key === "y" && (e.ctrlKey || e.metaKey)) {
-				history.redo();
-			} else if (e.key === "z" && (e.ctrlKey || e.metaKey)) {
-				history.undo();
-			}
-		}
-
-		document.addEventListener("keydown", onKeyDown);
-		return () => {
-			document.removeEventListener("keydown", onKeyDown);
-		};
-	}, [history, deleteLayers]);
-
 	const insertLayer = useMutation(
 		(
 			{ storage, setMyPresence },
@@ -175,7 +150,7 @@ const Canvas = ({ boardId }: CanvasProps) => {
 
 	const updateSelectionNet = useMutation(
 		({ storage, setMyPresence }, origin: Point, current: Point) => {
-			const layers = storage.get("layers").toArray();
+			const layers = storage.get("layers").toImmutable();
 			setCanvasState({
 				mode: CanvasMode.SelectionNet,
 				origin,
@@ -424,6 +399,31 @@ const Canvas = ({ boardId }: CanvasProps) => {
 
 		return layerIdsToColorSelection;
 	}, [selections]);
+
+	useEffect(() => {
+		function onKeyDown(e: KeyboardEvent) {
+			e.stopPropagation();
+
+			if (e.key === "Backspace" || e.key === "Delete") {
+				if (
+					e.target instanceof HTMLElement &&
+					!e.target.isContentEditable
+				)
+					deleteLayers();
+			} else if (e.key === "a" && (e.ctrlKey || e.metaKey)) {
+				selectAllLayers();
+			} else if (e.key === "y" && (e.ctrlKey || e.metaKey)) {
+				history.redo();
+			} else if (e.key === "z" && (e.ctrlKey || e.metaKey)) {
+				history.undo();
+			}
+		}
+
+		document.addEventListener("keydown", onKeyDown);
+		return () => {
+			document.removeEventListener("keydown", onKeyDown);
+		};
+	}, [history, deleteLayers, selectAllLayers]);
 
 	return (
 		<main className="h-full w-full relative bg-neutral-100 touch-none">
