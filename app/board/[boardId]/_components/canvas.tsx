@@ -59,9 +59,9 @@ const Canvas = ({ boardId }: CanvasProps) => {
 	});
 	const [camera, setCamera] = useState<Camera>({ x: 0, y: 0 });
 	const [lastUsedColor, setLastUsedColor] = useState<Color>({
-		r: 220,
-		g: 220,
-		b: 220,
+		r: 255,
+		g: 255,
+		b: 255,
 	});
 
 	useDisableScrollBalance();
