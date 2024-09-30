@@ -11,7 +11,7 @@ const Participants = () => {
 	const users = useOthers();
 	const currUser = useSelf();
 	return (
-		<div className="absolute h-12 top-2 right-2 bg-white rounded-md p-3 flex items-center shadow-md">
+		<div className="absolute h-12 top-2 right-2 bg-white rounded-md p-3 flex items-center shadow-md select-none">
 			<div className="flex gap-x-2">
 				{users.slice(0, MAX_USERS).map(({ connectionId, info }) => (
 					<UserAvatar
