@@ -100,9 +100,4 @@ SketchHive is built using the most modern and robust tools in the web developmen
 
 ---
 
-## 🛡️ License
-This project is licensed under the MIT License.
-
----
-
 Built with ❤️ by [Aliasgar Jhalodwala](https://github.com/aliasgarjhalodwala)
