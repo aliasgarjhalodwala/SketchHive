@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 SketchHive - Real-Time Collaborative Whiteboard
 
-## Getting Started
+![SketchHive Banner](https://raw.githubusercontent.com/aliasgarjhalodwala/SketchHive/main/public/logo.svg) <!-- Assuming a logo exists based on common project structures, if not I'll adjust or just use text -->
 
-First, run the development server:
+SketchHive is a high-performance, real-time collaborative whiteboard application designed to empower teams to brainstorm, design, and visualize ideas together, no matter where they are.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+SketchHive transforms the traditional brainstorming process into a dynamic, digital experience. Built with a focus on speed, reliability, and intuitive UX, it provides a seamless canvas for creative teams to collaborate in real-time.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🔴 The Problem
+In a world of remote work, teams often lose the "magic" of a physical whiteboard. Existing digital solutions are either too complex, lack true real-time synchronization, or don't offer a clean way to organize collaborative assets within professional organizations.
 
-## Learn More
+### ✅ The Solution
+SketchHive offers a "zero-friction" collaborative environment. It combines the simplicity of a physical whiteboard with the power of modern cloud technology.
+- **Instant Collaboration**: See what your team is doing exactly as they do it.
+- **Organized Creativity**: Manage boards by organization, ensuring the right people have access to the right ideas.
+- **Natural Interaction**: Smooth drawing tools that feel like pen on paper.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+SketchHive is built using the most modern and robust tools in the web development ecosystem:
 
-## Deploy on Vercel
+- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+- **Backend & Database**: [Convex](https://www.convex.dev/) (Reactive, real-time backend)
+- **Authentication**: [Clerk](https://clerk.com/) (Secure, organization-ready auth)
+- **Real-time Engine**: [Liveblocks](https://liveblocks.io/) (Presence, cursors, and state sync)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) & [Radix UI](https://www.radix-ui.com/)
+- **State Management**: [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)
+- **Drawing Logic**: [Perfect Freehand](https://github.com/steveruizok/perfect-freehand) for smooth, pressure-sensitive sketching.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ✨ Features That Matter
+
+- **Real-time Presence**: Interactive cursors and live participant avatars.
+- **Advanced Canvas**: Support for freehand drawing, geometric shapes, text blocks, and sticky notes.
+- **Multi-layered Organization**: Create and manage multiple boards within specific organizational contexts.
+- **Favorites & Search**: Quick-access system for high-priority boards and powerful title-based search.
+- **Image Exports**: Export your creative sessions into high-quality images.
+- **Responsive Workspace**: Optimized for both desktop precision and tablet flexibility.
+- **Optimistic Updates**: Zero-latency UI feel even on slower connections.
+
+---
+
+## 📦 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- NPM / PNPM / Bun
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/aliasgarjhalodwala/SketchHive.git
+   cd SketchHive
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up Environment Variables**
+   Create a `.env.local` file in the root directory and add the following:
+   ```env
+   CONVEX_DEPLOYMENT_URL=
+   NEXT_PUBLIC_CONVEX_URL=
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+   CLERK_SECRET_KEY=
+   LIVEBLOCKS_SECRET_KEY=
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Start Convex**
+   In a separate terminal, run:
+   ```bash
+   npx convex dev
+   ```
+
+---
+
+## 🏗️ Project Structure
+
+- `/app`: Next.js App Router routes and page layouts.
+- `/components`: Reusable UI components (buttons, dialogs, etc.).
+- `/convex`: Backend schema, mutations, and queries.
+- `/hooks`: Custom React hooks for canvas logic and auth.
+- `/lib`: Utility functions and configuration.
+- `/store`: Zustand store for local state management.
+
+---
+
+## 🛡️ License
+This project is licensed under the MIT License.
+
+---
+
+Built with ❤️ by [Aliasgar Jhalodwala](https://github.com/aliasgarjhalodwala)
